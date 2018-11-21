@@ -16,7 +16,7 @@ driver.get("http://172.17.55.8/cgi-bin/acn/")
 print ("Headless Firefox Initialized")
 
 # load credentials from file
-with open('credentials.json') as cred:
+with open('config/credentials.json') as cred:
     credentials = json.load(cred)
 
 # Pass in login credentials
@@ -36,26 +36,26 @@ def get_json(addr, name):
     driver.get(token_url + addr)
     soup = BeautifulSoup(driver.page_source, "html.parser")
     element = soup.get_text("div", {"id": "json"})
-    print(element)
-    f = open('%s.json' % name, 'w')
+    # print(element)
+    f = open('results/%s.json' % name, 'w')
     f.write(element)
     f.close()
     return json.loads(element)
 
-# get json for both 5ghz and 60ghz
-sixty_json = get_json("/admin/status/connected_clients_metro?ifname=radio1&freq=60", "60ghz")
-five_json = get_json("/admin/status/connected_clients?ifname=ath0", "5ghz")
+# get dict for both 5ghz and 60ghz
+sixty = get_json("/admin/status/connected_clients_metro?ifname=radio1&freq=60", "60ghz")
+five = get_json("/admin/status/connected_clients?ifname=ath0", "5ghz")
 
 # Need a separate json file for each mac
 # Init the arrays
 try:
-    with open('5ghz_MAC.json') as five_ghz_mac_raw:
+    with open('config/5ghz_MAC.json') as five_ghz_mac_raw:
         five_ghz_mac = json.load(five_ghz_mac_raw)
 except:
     five_ghz_mac = {}
 
 try:
-    with open('60ghz_MAC.json', newline='') as sixty_ghz_mac_raw:
+    with open('config/60ghz_MAC.json', newline='') as sixty_ghz_mac_raw:
         sixty_ghz_mac = json.load(sixty_ghz_mac_raw)
 except:
     sixty_ghz_mac = {}
@@ -64,6 +64,21 @@ except:
 if (sixty_ghz_mac == {}):
     print(five_ghz_mac)
 
+print(five["clients"][0]['mac'])
+print(len(five["clients"]))
+
+for i in five["clients"]:
+    print(i)
+    if i['mac'] in five_ghz_mac:
+        print("exists!")
+        five_ghz_mac[i['mac']] = 1
+
+    else:
+        print("not exists!")
+        five_ghz_mac[i['mac']] = 2
+
+
+print(five_ghz_mac)
 print("but we continue")
 
 
