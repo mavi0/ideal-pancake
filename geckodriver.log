@@ -850,3 +850,109 @@ JavaScript error: resource://devtools-client-jsonview/lib/require.js, line 166: 
 http://requirejs.org/docs/errors.html#scripterror
 [Parent 13830, Gecko_IOThread] WARNING: pipe error (68): Connection reset by peer: file /build/firefox-4VfQCB/firefox-63.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
 [Parent 13830, Gecko_IOThread] WARNING: pipe error (99): Connection reset by peer: file /build/firefox-4VfQCB/firefox-63.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1542885073474	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.6Lgo4c5LFmZR"
+*** You are running in headless mode.
+1542885075046	Marionette	INFO	Listening on port 44077
+1542885075085	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://172.17.55.8/javascript/jquery-1.9.1.min.js?ver=2.3.0-2953, line 1: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://172.17.55.8/javascript/jquery-1.9.1.min.js?ver=2.3.0-2953, line 1: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript error: resource://devtools-client-jsonview/lib/require.js, line 166: Error: Script error for: json-viewer
+http://requirejs.org/docs/errors.html#scripterror
+1542885077339	Marionette	INFO	Stopped listening on port 44077
+JavaScript error: resource://devtools-client-jsonview/lib/require.js, line 166: Error: Script error for: components/SearchBox
+http://requirejs.org/docs/errors.html#scripterror
+JavaScript error: resource://devtools-client-jsonview/lib/require.js, line 166: Error: Script error for: components/reps/Toolbar
+http://requirejs.org/docs/errors.html#scripterror
+JavaScript error: resource://devtools-client-jsonview/lib/require.js, line 166: Error: Script error for: devtools/client/shared/components/tree/TreeCell
+http://requirejs.org/docs/errors.html#scripterror
+JavaScript error: resource://devtools-client-jsonview/lib/require.js, line 166: Error: Script error for: devtools/client/shared/components/tree/LabelCell
+http://requirejs.org/docs/errors.html#scripterror
+JavaScript error: resource://devtools-client-jsonview/lib/require.js, line 166: Error: Script error for: devtools/client/shared/scroll
+http://requirejs.org/docs/errors.html#scripterror
+JavaScript error: resource://devtools-client-jsonview/lib/require.js, line 166: Error: Script error for: devtools/client/shared/vendor/react-redux
+http://requirejs.org/docs/errors.html#scripterror
+JavaScript error: resource://devtools-client-jsonview/lib/require.js, line 166: Error: Script error for: devtools/client/shared/vendor/redux
+http://requirejs.org/docs/errors.html#scripterror
+[Parent 14913, Gecko_IOThread] WARNING: pipe error (91): Connection reset by peer: file /build/firefox-4VfQCB/firefox-63.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+[Parent 14913, Gecko_IOThread] WARNING: pipe error (68): Connection reset by peer: file /build/firefox-4VfQCB/firefox-63.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1542885116499	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.rOhOH4idamM6"
+*** You are running in headless mode.
+1542885118000	Marionette	INFO	Listening on port 35591
+1542885118011	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://172.17.55.8/javascript/jquery-1.9.1.min.js?ver=2.3.0-2953, line 1: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://172.17.55.8/javascript/jquery-1.9.1.min.js?ver=2.3.0-2953, line 1: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript error: resource://devtools-client-jsonview/lib/require.js, line 166: Error: Script error for: devtools/client/shared/vendor/react-dom
+http://requirejs.org/docs/errors.html#scripterror
+JavaScript error: resource://devtools-client-jsonview/lib/require.js, line 166: Error: Script error for: devtools/client/shared/react-utils
+http://requirejs.org/docs/errors.html#scripterror
+JavaScript error: resource://devtools-client-jsonview/lib/require.js, line 166: Error: Script error for: components/MainTabbedArea
+http://requirejs.org/docs/errors.html#scripterror
+JavaScript error: resource://devtools-client-jsonview/lib/require.js, line 166: Error: Script error for: devtools/client/shared/components/tree/TreeView
+http://requirejs.org/docs/errors.html#scripterror
+1542885120308	Marionette	INFO	Stopped listening on port 35591
+JavaScript error: resource://devtools-client-shared/components/reps/reps.js, line 6124: TypeError: __webpack_require__(...) is undefined
+[Parent 15259, Gecko_IOThread] WARNING: pipe error (68): Connection reset by peer: file /build/firefox-4VfQCB/firefox-63.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+[Parent 15259, Gecko_IOThread] WARNING: pipe error (99): Connection reset by peer: file /build/firefox-4VfQCB/firefox-63.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1542885219219	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.jnSLQRSKrT8J"
+*** You are running in headless mode.
+1542885220768	Marionette	INFO	Listening on port 36495
+1542885220823	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://172.17.55.8/javascript/jquery-1.9.1.min.js?ver=2.3.0-2953, line 1: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://172.17.55.8/javascript/jquery-1.9.1.min.js?ver=2.3.0-2953, line 1: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:721:13
+
+1542885259938	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.BYURXim79xpj"
+*** You are running in headless mode.
+1542885261384	Marionette	INFO	Listening on port 32839
+1542885261447	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://172.17.55.8/javascript/jquery-1.9.1.min.js?ver=2.3.0-2953, line 1: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://172.17.55.8/javascript/jquery-1.9.1.min.js?ver=2.3.0-2953, line 1: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1542885263766	Marionette	INFO	Stopped listening on port 32839
+JavaScript error: resource://devtools-client-jsonview/lib/require.js, line 166: Error: Script error for: devtools/client/shared/components/tree/TreeCell
+http://requirejs.org/docs/errors.html#scripterror
+JavaScript error: resource://devtools-client-jsonview/lib/require.js, line 166: Error: Script error for: devtools/client/shared/components/tree/LabelCell
+http://requirejs.org/docs/errors.html#scripterror
+JavaScript error: resource://devtools-client-jsonview/lib/require.js, line 166: Error: Script error for: devtools/client/shared/scroll
+http://requirejs.org/docs/errors.html#scripterror
+JavaScript error: resource://devtools-client-jsonview/lib/require.js, line 166: Error: Script error for: devtools/client/shared/vendor/react-redux
+http://requirejs.org/docs/errors.html#scripterror
+JavaScript error: resource://devtools-client-jsonview/lib/require.js, line 166: Error: Script error for: devtools/client/shared/vendor/redux
+http://requirejs.org/docs/errors.html#scripterror
+[Parent 15993, Gecko_IOThread] WARNING: pipe error (99): Connection reset by peer: file /build/firefox-4VfQCB/firefox-63.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+[Parent 15993, Gecko_IOThread] WARNING: pipe error (68): Connection reset by peer: file /build/firefox-4VfQCB/firefox-63.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1542885281960	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.14OLHfdqOYCh"
+*** You are running in headless mode.
+1542885283388	Marionette	INFO	Listening on port 43649
+1542885283465	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://172.17.55.8/javascript/jquery-1.9.1.min.js?ver=2.3.0-2953, line 1: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://172.17.55.8/javascript/jquery-1.9.1.min.js?ver=2.3.0-2953, line 1: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1542885285814	Marionette	INFO	Stopped listening on port 43649
+[Parent 16342, Gecko_IOThread] WARNING: pipe error (68): Connection reset by peer: file /build/firefox-4VfQCB/firefox-63.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+[Parent 16342, Gecko_IOThread] WARNING: pipe error (99): Connection reset by peer: file /build/firefox-4VfQCB/firefox-63.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1542885303589	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.2TNxNtpS09Jb"
+*** You are running in headless mode.
+1542885305172	Marionette	INFO	Listening on port 46399
+1542885305202	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://172.17.55.8/javascript/jquery-1.9.1.min.js?ver=2.3.0-2953, line 1: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://172.17.55.8/javascript/jquery-1.9.1.min.js?ver=2.3.0-2953, line 1: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript error: resource://devtools-client-jsonview/lib/require.js, line 166: Error: Script error for: json-viewer
+http://requirejs.org/docs/errors.html#scripterror
+1542885307457	Marionette	INFO	Stopped listening on port 46399
+JavaScript error: resource://devtools-client-jsonview/lib/require.js, line 166: Error: Script error for: devtools/client/shared/components/tree/TreeCell
+http://requirejs.org/docs/errors.html#scripterror
+JavaScript error: resource://devtools-client-jsonview/lib/require.js, line 166: Error: Script error for: devtools/client/shared/components/tree/LabelCell
+http://requirejs.org/docs/errors.html#scripterror
+JavaScript error: resource://devtools-client-jsonview/lib/require.js, line 166: Error: Script error for: devtools/client/shared/scroll
+http://requirejs.org/docs/errors.html#scripterror
+JavaScript error: resource://devtools-client-jsonview/lib/require.js, line 166: Error: Script error for: devtools/client/shared/vendor/react-redux
+http://requirejs.org/docs/errors.html#scripterror
+JavaScript error: resource://devtools-client-jsonview/lib/require.js, line 166: Error: Script error for: devtools/client/shared/vendor/redux
+http://requirejs.org/docs/errors.html#scripterror
+[Parent 16612, Gecko_IOThread] WARNING: pipe error (68): Connection reset by peer: file /build/firefox-4VfQCB/firefox-63.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+[Parent 16612, Gecko_IOThread] WARNING: pipe error (97): Connection reset by peer: file /build/firefox-4VfQCB/firefox-63.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356

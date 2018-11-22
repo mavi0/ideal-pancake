@@ -1,4 +1,4 @@
-# Ignitenet Metrolinq link data scraper
+# Ignitenet Metrolinq data scraper
 
 Extract JSON from IGNITENET Metrolinq web ui for client monitoring statistics
 
