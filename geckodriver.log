@@ -724,3 +724,67 @@ JavaScript warning: http://172.17.55.8/javascript/jquery-1.9.1.min.js?ver=2.3.0-
 JavaScript warning: http://172.17.55.8/javascript/jquery-1.9.1.min.js?ver=2.3.0-2953, line 1: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
 1542820687710	Marionette	INFO	Stopped listening on port 42825
 [Parent 20122, Gecko_IOThread] WARNING: pipe error (68): Connection reset by peer: file /build/firefox-4VfQCB/firefox-63.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1542882899793	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.yH5msWGod66f"
+*** You are running in headless mode.
+1542882901241	Marionette	INFO	Listening on port 39431
+1542882901297	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://172.17.55.8/javascript/jquery-1.9.1.min.js?ver=2.3.0-2953, line 1: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://172.17.55.8/javascript/jquery-1.9.1.min.js?ver=2.3.0-2953, line 1: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://172.17.55.8/javascript/jquery-1.9.1.min.js?ver=2.3.0-2953, line 1: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:721:13
+
+1542882969597	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.kymoyV7Acky3"
+*** You are running in headless mode.
+1542882971078	Marionette	INFO	Listening on port 37227
+1542882971108	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://172.17.55.8/javascript/jquery-1.9.1.min.js?ver=2.3.0-2953, line 1: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://172.17.55.8/javascript/jquery-1.9.1.min.js?ver=2.3.0-2953, line 1: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://172.17.55.8/javascript/jquery-1.9.1.min.js?ver=2.3.0-2953, line 1: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:721:13
+
+1542882993305	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.p56XSQy64Dij"
+*** You are running in headless mode.
+1542882994786	Marionette	INFO	Listening on port 45087
+1542882994812	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://172.17.55.8/javascript/jquery-1.9.1.min.js?ver=2.3.0-2953, line 1: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://172.17.55.8/javascript/jquery-1.9.1.min.js?ver=2.3.0-2953, line 1: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://172.17.55.8/javascript/jquery-1.9.1.min.js?ver=2.3.0-2953, line 1: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:721:13
+
+1542883031417	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.P2SBi4Okjhyh"
+*** You are running in headless mode.
+1542883032937	Marionette	INFO	Listening on port 45799
+1542883033023	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://172.17.55.8/javascript/jquery-1.9.1.min.js?ver=2.3.0-2953, line 1: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://172.17.55.8/javascript/jquery-1.9.1.min.js?ver=2.3.0-2953, line 1: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1542883035505	Marionette	INFO	Stopped listening on port 45799
+JavaScript error: resource://devtools-client-jsonview/lib/require.js, line 166: Error: Script error for: components/SearchBox
+http://requirejs.org/docs/errors.html#scripterror
+JavaScript error: resource://devtools-client-jsonview/lib/require.js, line 166: Error: Script error for: components/reps/Toolbar
+http://requirejs.org/docs/errors.html#scripterror
+JavaScript error: resource://devtools-client-jsonview/lib/require.js, line 166: Error: Script error for: devtools/client/shared/components/tree/TreeCell
+http://requirejs.org/docs/errors.html#scripterror
+JavaScript error: resource://devtools-client-jsonview/lib/require.js, line 166: Error: Script error for: devtools/client/shared/components/tree/LabelCell
+http://requirejs.org/docs/errors.html#scripterror
+JavaScript error: resource://devtools-client-jsonview/lib/require.js, line 166: Error: Script error for: devtools/client/shared/scroll
+http://requirejs.org/docs/errors.html#scripterror
+[Parent 9988, Gecko_IOThread] WARNING: pipe error (97): Connection reset by peer: file /build/firefox-4VfQCB/firefox-63.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+[Parent 9988, Gecko_IOThread] WARNING: pipe error (68): Connection reset by peer: file /build/firefox-4VfQCB/firefox-63.0+build2/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
