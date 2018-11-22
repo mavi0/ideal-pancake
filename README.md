@@ -20,7 +20,7 @@ sudo cp geckodriver /usr/local/bin/geckodriver
 ```
 4. Make directory for results and config
 ```bash
-cd .. && mkdir results/ && mkdir config/
+mkdir results/ && mkdir config/
 ```
 5. Get credentials file for the radio. Edit it to include the correct hostname, username and password
 ```bash
