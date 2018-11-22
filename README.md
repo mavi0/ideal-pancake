@@ -22,7 +22,7 @@ sudo cp geckodriver /usr/local/bin/geckodriver
 ```bash
 cd config/ && wget https://gist.githubusercontent.com/mavi0/e297397e52cd613f7b96228164000e4e/raw/cdd6b9a256473eba3afe1c6de998946f91360a4b/credentials.json && vi credentials.json
 ```
-5. Make directory fo results
+5. Make directory for results
 ```bash
 cd .. && mkdir results/
 ```
