@@ -1,0 +1,1 @@
+{"mac": "28:76:10:14:E7:E9", "local_rssi_percentage": 49, "remote_rssi_percentage": 52, "link_time": 33014, "remote_rssi_class": "bar-success", "local_rssi_class": "bar-warning", "tx_rate": 385, "tx_packets": 208438576, "rx": 237806149, "tx": 14340171949, "rx_rate": 385, "local_rssi": -61, "remote_rssi": -59, "keepalive": 1.033}
