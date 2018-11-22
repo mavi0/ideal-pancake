@@ -27,7 +27,7 @@ password = driver.find_element_by_name('password')
 password.send_keys(credentials["password"])
 signInButton = driver.find_element_by_id('Apply')
 signInButton.click()
-driver.get_screenshot_as_file('ignite.png')
+# driver.get_screenshot_as_file('ignite.png')
 
 # This var holds the base URL with the token needed for authentication
 token_url = driver.current_url
