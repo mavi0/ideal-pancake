@@ -6,36 +6,11 @@ from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 import json
 import os, errno
-
-# Start FireFox in headless mode
-options = Options()
-options.headless = True
-driver = webdriver.Firefox(options=options)
-
-# load credentials from file
-with open('config/credentials.json') as cred:
-    credentials = json.load(cred)
-
-# Connect to login page
-driver.get("http://" + credentials['hostname'] + "/cgi-bin/acn/")
-print ("Headless Firefox Initialized")
-
-# Pass in login credentials
-username = driver.find_element_by_name('username')
-username.send_keys(credentials["username"])
-password = driver.find_element_by_name('password')
-password.send_keys(credentials["password"])
-signInButton = driver.find_element_by_id('Apply')
-signInButton.click()
-# driver.get_screenshot_as_file('ignite.png')
-
-# This var holds the base URL with the token needed for authentication
-token_url = driver.current_url
-
-print("Token: " + token_url)
+import schedule
+import time
 
 # take the address of the script and a name to save as.
-def get_json(addr, name):
+def get_json(addr, name, driver):
     driver.get(token_url + addr)
     soup = BeautifulSoup(driver.page_source, "html.parser")
     element = soup.get_text("div", {"id": "json"})
@@ -85,48 +60,84 @@ def export_json(macs_dictionary, current_dictionary):
                 except OSError:
                     pass
 
-# get dict for both 5ghz and 60ghz
-# with open('results/60ghz.json') as cred:
-#     sixty = json.load(cred)
-sixty = get_json("/admin/status/connected_clients_metro?ifname=radio1&freq=60", "60ghz")
-print("Loaded 60GHz JSON")
-five = get_json("/admin/status/connected_clients?ifname=ath0", "5ghz")
-print("Loaded 5GHz JSON")
-# Load MAC dictionaries
-# Init the arrays if null
-try:
-    with open('config/5ghz_MAC.json') as five_ghz_mac_raw:
-        five_ghz_mac = json.load(five_ghz_mac_raw)
-except:
-    five_ghz_mac = {}
+def main():
+    # Start FireFox in headless mode
+    options = Options()
+    options.headless = True
+    driver = webdriver.Firefox(options=options)
 
-try:
-    with open('config/60ghz_MAC.json', newline='') as sixty_ghz_mac_raw:
-        sixty_ghz_mac = json.load(sixty_ghz_mac_raw)
-except:
-    sixty_ghz_mac = {}
+    # load credentials from file
+    with open('config/credentials.json') as cred:
+        credentials = json.load(cred)
+
+    # Connect to login page
+    driver.get("http://" + credentials['hostname'] + "/cgi-bin/acn/")
+    print ("Headless Firefox Initialized")
+
+    # Pass in login credentials
+    username = driver.find_element_by_name('username')
+    username.send_keys(credentials["username"])
+    password = driver.find_element_by_name('password')
+    password.send_keys(credentials["password"])
+    signInButton = driver.find_element_by_id('Apply')
+    signInButton.click()
+    # driver.get_screenshot_as_file('ignite.png')
+
+    # This var holds the base URL with the token needed for authentication
+    token_url = driver.current_url
+
+    print("Token: " + token_url)
+
+    # get dict for both 5ghz and 60ghz
+    # with open('results/60ghz.json') as cred:
+    #     sixty = json.load(cred)
+    sixty = get_json("/admin/status/connected_clients_metro?ifname=radio1&freq=60", "60ghz", driver)
+    print("Loaded 60GHz JSON")
+    five = get_json("/admin/status/connected_clients?ifname=ath0", "5ghz", driver)
+    print("Loaded 5GHz JSON")
+    # Load MAC dictionaries
+    # Init the arrays if null
+    try:
+        with open('config/5ghz_MAC.json') as five_ghz_mac_raw:
+            five_ghz_mac = json.load(five_ghz_mac_raw)
+    except:
+        five_ghz_mac = {}
+
+    try:
+        with open('config/60ghz_MAC.json', newline='') as sixty_ghz_mac_raw:
+            sixty_ghz_mac = json.load(sixty_ghz_mac_raw)
+    except:
+        sixty_ghz_mac = {}
 
 
-# Load 5GHz MACs into dictionary
-five_ghz_mac = load_macs(five_ghz_mac, five)
-# Load 60GHz MACs into dictionary
-sixty_ghz_mac = load_macs(sixty_ghz_mac, sixty)
-print("Loaded MACs from JSON")
-print("60GHz MACS:")
-print(sixty_ghz_mac)
-print("5GHz MACS:")
-print(five_ghz_mac)
+    # Load 5GHz MACs into dictionary
+    five_ghz_mac = load_macs(five_ghz_mac, five)
+    # Load 60GHz MACs into dictionary
+    sixty_ghz_mac = load_macs(sixty_ghz_mac, sixty)
+    print("Loaded MACs from JSON")
+    print("60GHz MACS:")
+    print(sixty_ghz_mac)
+    print("5GHz MACS:")
+    print(five_ghz_mac)
 
-# export the arrays of clients as separate JSON files for 5GHz
-export_json(five_ghz_mac, five)
-# and 60GHz
-export_json(sixty_ghz_mac, sixty)
-print("Exported JSON to files")
+    # export the arrays of clients as separate JSON files for 5GHz
+    export_json(five_ghz_mac, five)
+    # and 60GHz
+    export_json(sixty_ghz_mac, sixty)
+    print("Exported JSON to files")
 
-# save current macs to file
-save_macs(five_ghz_mac, "5ghz_MAC")
-save_macs(sixty_ghz_mac, "60ghz_MAC")
-print("Exported MAC config files")
+    # save current macs to file
+    save_macs(five_ghz_mac, "5ghz_MAC")
+    save_macs(sixty_ghz_mac, "60ghz_MAC")
+    print("Exported MAC config files")
 
-print("Quiting Firefox...")
-driver.quit()
+    print("Quiting Firefox...")
+    driver.quit()
+
+
+# run every 1 minute
+schedule.every(1).minutes.do(main)
+
+while True:
+    schedule.run_pending()
+    time.sleep(1)
