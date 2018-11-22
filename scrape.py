@@ -10,7 +10,7 @@ import schedule
 import time
 
 # take the address of the script and a name to save as.
-def get_json(addr, name, driver):
+def get_json(addr, name, driver, token_url):
     driver.get(token_url + addr)
     soup = BeautifulSoup(driver.page_source, "html.parser")
     element = soup.get_text("div", {"id": "json"})
@@ -91,9 +91,9 @@ def main():
     # get dict for both 5ghz and 60ghz
     # with open('results/60ghz.json') as cred:
     #     sixty = json.load(cred)
-    sixty = get_json("/admin/status/connected_clients_metro?ifname=radio1&freq=60", "60ghz", driver)
+    sixty = get_json("/admin/status/connected_clients_metro?ifname=radio1&freq=60", "60ghz", driver, token_url)
     print("Loaded 60GHz JSON")
-    five = get_json("/admin/status/connected_clients?ifname=ath0", "5ghz", driver)
+    five = get_json("/admin/status/connected_clients?ifname=ath0", "5ghz", driver, token_url)
     print("Loaded 5GHz JSON")
     # Load MAC dictionaries
     # Init the arrays if null
