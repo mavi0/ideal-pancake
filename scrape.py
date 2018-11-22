@@ -37,13 +37,15 @@ def get_json(addr, name):
     driver.get(token_url + addr)
     soup = BeautifulSoup(driver.page_source, "html.parser")
     element = soup.get_text("div", {"id": "json"})
-    # print(element)
     f = open('results/%s.json' % name, 'w')
     f.write(element)
     f.close()
     return json.loads(element)
 
-# Load macs into dictionary - check for existing
+# Load macs into dictionary - check for existing macs.
+# 0 = default state
+# 1 = matched to mac in the loaded dictionary
+# 2 = new mac discovered //not really used
 def load_macs(macs_dictionary, current_dictionary):
     for i in current_dictionary["clients"]:
         if i['mac'] in macs_dictionary:
@@ -53,7 +55,7 @@ def load_macs(macs_dictionary, current_dictionary):
 
     return macs_dictionary
 
-# zero macs ready for saving to file for next execution
+# zero macs ready for saving to file for next execution - default state
 def zero_macs(macs_dictionary):
     for i in macs_dictionary:
         macs_dictionary[i] = 0
@@ -65,6 +67,9 @@ def save_macs(macs_dictionary, file_name):
     with open('config/%s.json' % file_name, 'w') as json_file:
         json.dump(zero_macs(macs_dictionary), json_file)
 
+# export method for separating client entries into separate JSON files for ZABBIX to parse
+# iterate over the clients array and match with a mac in the list of macs loaded.
+# If the mac is 0 then it doesn't exist at the moment (the connection has dropped), so delete the file
 def export_json(macs_dictionary, current_dictionary):
     for i in current_dictionary["clients"]:
         for j in macs_dictionary:
@@ -104,29 +109,11 @@ five_ghz_mac = load_macs(five_ghz_mac, five)
 # Load 60GHz MACs into dictionary
 sixty_ghz_mac = load_macs(sixty_ghz_mac, sixty)
 
-
-print(five_ghz_mac)
-print(sixty_ghz_mac)
-
-print(five["clients"][0])
-
+# export the arrays of clients as separate JSON files for 5GHz
 export_json(five_ghz_mac, five)
+# and 60GHz
 export_json(sixty_ghz_mac, sixty)
-
-# for i in five["clients"]:
-#     for j in five_ghz_mac:
-#         if five_ghz_mac[j] > 0 and i['mac'] == j:
-#             with open('results/%s.json' % j, 'w') as json_file:
-#                 json.dump(i, json_file)
-#
-#         if five_ghz_mac[j] == 0:
-#             try:
-#                 os.remove("%s.json" % j)
-#             except OSError:
-#                 pass
-
-
-
+# save current macs to file
 save_macs(five_ghz_mac, "5ghz_MAC")
 save_macs(sixty_ghz_mac, "60ghz_MAC")
 
