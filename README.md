@@ -11,7 +11,7 @@ cd ideal-pancake/
 ```
 2. Install dependancies
 ```bash
-sudo apt install -y python3 python-pip python3-pip python3-bs4 firefox vim wget
+sudo apt install -y python3 python-pip python3-pip python3-bs4 firefox vim wget screen
 pip3 install iperf3 pingparsing bs4 selenium schedule
 ```
 3. Put geckodriver in /usr/local/bin
@@ -34,3 +34,8 @@ Simply run:
  python3 scrape.py
  ```
 The output will be saved to the results directory
+
+To start it detatched from your currrent terminal session run:
+```bash
+screen -dmS scrape python3 scrape.py
+```
