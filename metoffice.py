@@ -12,18 +12,21 @@ import time
 
 # Start FireFox in headless mode
 def main():
-    options = Options()
-    options.headless = True
-    driver = webdriver.Firefox(options=options)
-    print ("Headless Firefox Initialized")
-    driver.get("https://www.metoffice.gov.uk/public/weather/observation/map/gcx2t2dez#?zoom=9&lat=53.53&lon=-0.82&map=Rainfall")
-    driver.find_element_by_class_name('as-oil__btn-optin').click()
-    driver.execute_script("window.scrollTo(0, 530)")
-    time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    print("Saving %s.png to file" % time)
-    driver.get_screenshot_as_file('met/%s.png' % time)
-    print ("Quitting Firefox...")
-    driver.quit()
+    try:
+        options = Options()
+        options.headless = True
+        driver = webdriver.Firefox(options=options)
+        print ("Headless Firefox Initialized")
+        driver.get("https://www.metoffice.gov.uk/public/weather/observation/map/gcx2t2dez#?zoom=9&lat=53.53&lon=-0.82&map=Rainfall")
+        driver.find_element_by_class_name('as-oil__btn-optin').click()
+        driver.execute_script("window.scrollTo(0, 530)")
+        time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        print("Saving %s.png to file" % time)
+        driver.get_screenshot_as_file('met/%s.png' % time)
+        print ("Quitting Firefox...")
+        driver.quit()
+    except:
+        print("An error occured, attempting to continue")
 
 schedule.every(10).minutes.do(main)
 # main()
