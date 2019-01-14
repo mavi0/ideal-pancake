@@ -64,6 +64,7 @@ def export_json(macs_dictionary, current_dictionary):
                     pass
 
 def main():
+    global main_errors
     try:
         # Start FireFox in headless mode
         options = Options()
@@ -146,6 +147,12 @@ def main():
         print ("An unrecoverable error occured during the program execution.")
         print ("This is likely due to transient network issues.")
         print ("Results from this execution cycle will be discarded (if they exist)")
+        mail("""\
+        Subject: IgniteNet Auckley Monitoring FAIL
+
+        CRITICAL FAIL
+
+        IgniteNet Auckley monitoring script has failed, action is required now""")
         exit_safe()
         main_errors += 1
         print ("This was failiure %d of 3. At 3 failiures the program will exit.")
@@ -158,6 +165,19 @@ def exit_safe():
     for f in files:
         os.remove(f)
 
+
+def mail(content):
+    port = 465  # For SSL
+    smtp_server = "smtp.gmail.com"
+    sender_email = "a09.athena@gmail.com"  # Enter your address
+    receiver_email = "ellie@mavieson.co.uk"  # Enter receiver address
+    password = "@oMr^&pcS$rhCM85O#PaG7c&gT$Z2oWGgNsqRc#%"
+    message = content
+
+    context = ssl.create_default_context()
+    with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+        server.login(sender_email, password)
+        server.sendmail(sender_email, receiver_email, message)
 # run every 1 minute
 
 atexit.register(exit_safe)
