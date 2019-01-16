@@ -5,7 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 import json
-import os, errno, glob, sys
+import os, errno, glob, sys, smtplib, ssl
 import schedule
 import time
 import atexit
@@ -147,12 +147,6 @@ def main():
         print ("An unrecoverable error occured during the program execution.")
         print ("This is likely due to transient network issues.")
         print ("Results from this execution cycle will be discarded (if they exist)")
-        mail("""\
-        Subject: IgniteNet Auckley Monitoring FAIL
-
-        CRITICAL FAIL
-
-        IgniteNet Auckley monitoring script has failed, action is required now""")
         exit_safe()
         main_errors += 1
         print ("This was failiure %d of 3. At 3 failiures the program will exit.")
@@ -161,6 +155,12 @@ def main():
 
 def exit_safe():
     print ("An unrecoverable error occured. Clearing up results directory.")
+    mail("""\
+    Subject: IgniteNet Auckley Monitoring FAIL
+
+    CRITICAL FAIL
+
+    IgniteNet Auckley monitoring script has failed, action is required now""")
     files = glob.glob('results/*')
     for f in files:
         os.remove(f)
