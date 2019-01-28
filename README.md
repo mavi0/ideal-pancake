@@ -35,7 +35,7 @@ Simply run:
  ```
 The output will be saved to the results directory
 
-To start it detatched from your currrent terminal session run:
+To run as a service:
 ```bash
-screen -dmS scrape python3 scrape.py
+crontab crontab
 ```

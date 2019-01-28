@@ -1,0 +1,3 @@
+# * * * * * sudo route add -net 172.17.0.0 netmask 255.255.0.0 gw 46.231.9.234
+* * * * * cd /home/arisaie/selenium && bash main.sh 2>&1 | tee main.log
+*/10 * * * * cd /home/arisaie/selenium && bash metoffice.sh 2>&1 | tee main.log
