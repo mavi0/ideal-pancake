@@ -14,9 +14,9 @@ cd ideal-pancake/
 sudo apt install -y python3 python-pip python3-pip python3-bs4 firefox vim wget screen
 pip3 install iperf3 pingparsing bs4 selenium schedule
 ```
-3. Put geckodriver in /usr/local/bin
+3. Put geckodriver in ~/.local/bin/
 ```bash
-sudo cp geckodriver /usr/local/bin/geckodriver
+sudo rsync -a geckodriver ~/.local/bin/geckodriver
 ```
 4. Make directory for results and config
 ```bash
@@ -31,7 +31,7 @@ cd config/ && wget https://gist.githubusercontent.com/mavi0/e297397e52cd613f7b96
 
 Simply run:
 ```bash
- python3 scrape.py
+ bash main.sh
  ```
 The output will be saved to the results directory
 
