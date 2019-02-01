@@ -1,5 +1,5 @@
 export PATH=$PATH:~/.local/bin
-python3 scrape.py
 python3 6h.py
-killall firefox
-killall geckodriver
+python3 scrape.py
+sudo killall firefox
+sudo killall geckodriver

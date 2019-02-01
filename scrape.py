@@ -88,21 +88,27 @@ def main():
     main_errors = 0
 
     for main_errors in range (0, 3):
+        logging.info("Program started")
+
+        options = Options()
+        options.headless = True
+        driver = webdriver.Firefox(options=options)
+        # print("precred")
         try:
         # Start FireFox in headless mode
-            logging.info("Program started")
-
-            options = Options()
-            options.headless = True
-            driver = webdriver.Firefox(options=options)
-
             # load credentials from file
             with open('config/credentials.json') as cred:
                 credentials = json.load(cred)
 
+            driver.get("http://google.com")
+            driver.get_screenshot_as_file("google.png")
+
+            # print("http://" + credentials['hostname'] + "/cgi-bin/acn/")
             # Connect to login page
             driver.get("http://" + credentials['hostname'] + "/cgi-bin/acn/")
             logging.info("Headless Firefox Initialized")
+            driver.get_screenshot_as_file('preauth.png')
+
 
             # Pass in login credentials
             username = driver.find_element_by_name('username')
@@ -111,12 +117,26 @@ def main():
             password.send_keys(credentials["password"])
             signInButton = driver.find_element_by_id('Apply')
             signInButton.click()
-            # driver.get_screenshot_as_file('ignite.png')
+            driver.get_screenshot_as_file('afterauth.png')
 
             # This var holds the base URL with the token needed for authentication
             token_url = driver.current_url
+            logging.info("Token: " + token_url)
+
+            for i in range(10):
+                if 'stok' not in token_url:
+                    logging.warning("URL does not contain a token. Retrying...")
+                    time.sleep(2)
+                    token_url = driver.current_url
+                    logging.info("Token: " + token_url)
+                    driver.get_screenshot_as_file('afterauth%s.png', i)
+                else:
+                    break
+
+
 
             logging.info("Token: " + token_url)
+
 
             # get dict for both 5ghz and 60ghz
             # with open('results/60ghz.json') as cred:
@@ -168,14 +188,14 @@ def main():
             break
 
         except:
+            driver.quit()
             logging.error ("An unrecoverable error occured during the program execution.")
             logging.warning ("This is likely due to transient network issues.")
             logging.warning ("Results from this execution cycle will be discarded (if they exist)")
-            exit_safe()
             main_errors += 1
             logging.info ("This was failiure %s of 3. At 3 failiures the program will exit." % main_errors)
             if main_errors >= 3:
-                logging.critical("The ")
+                logging.critical("Something broke :/")
                 sys.exit()
                 mail("""\
                     Subject: IgniteNet Auckley Monitoring FAIL
