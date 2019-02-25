@@ -27,10 +27,15 @@ def mail(content):
 
 def get_data():
     logging.info ("Connecting to 172.17.82.2")
-    connData = json.loads(subprocess.check_output(["curl", "-s", "http://172.17.83.2/cgi-bin/gws/monitor?1"]))
+    # subprocess.check_output(["curl", "-s", "https://172.17.83.2/cgi-bin/gws/monitor?1"])
+    # curl -k -s https://172.17.83.10/gws/ -c cookiefile -d "user=admin&pass=quick007"
+    # curl -k -s https://172.17.83.10/cgi-bin/gws/monitor?1 -b cookiefile
+    
+    connData = json.loads(subprocess.check_output(["curl", "-k", "-s", "https://172.17.83.2/cgi-bin/gws/monitor?1"]))
 
     tx = connData["Station"][0]["sta1tx"].split()
     rx = connData["Station"][0]["sta1rx"].split()
+    snr = connData["Station"][0]["sta1snr"].split()
 
     connData["Station"][0]["tx_speed"] = tx[0]
     connData["Station"][0]["tx_MCS"] = tx[3].replace(",", "")
@@ -39,6 +44,10 @@ def get_data():
     connData["Station"][0]["rx_speed"] = rx[0]
     connData["Station"][0]["rx_MCS"] = rx[3].replace(",", "")
     connData["Station"][0]["rx_pkts"] = rx[-2]
+
+    connData["Station"][0]["rssi"] = snr[0]
+    connData["Station"][0]["floor"] = snr[3]
+    connData["Station"][0]["snr"] = snr[7]
 
     logging.info(connData)
 
