@@ -25,7 +25,7 @@ def mail(content):
         server.login(sender_email, password)
         server.sendmail(sender_email, receiver_email, message)
 
-def get_data():
+def get_data(hostname, file):
     logging.info ("Connecting to 172.17.82.2")
     # subprocess.check_output(["curl", "-s", "https://172.17.83.2/cgi-bin/gws/monitor?1"])
     # curl -k -s https://172.17.83.10/gws/ -c cookiefile -d "user=admin&pass=quick007"
@@ -51,27 +51,35 @@ def get_data():
 
     logging.info(connData)
 
-    with open('results_6H/6h.json', 'w') as json_file:
+    with open('results_6H/' + file, 'w') as json_file:
         json.dump(connData, json_file)
 
     main_errors = 0
     logging.info ("Completed witout errors.")
 
-def main():
+        
+
+def six_harmonics(hostname, file):
     main_errors = 0
     for main_errors in range(0, 3):
         try:
-            get_data()
+            get_data(hostname, file)
             break
 
         except:
             logging.warning ("An error occured trying to capture the data from the BTS")
-            mail("""\
-            Subject: 6H Bardney Monitoring WARNING
+            try:
+                os.remove("results/6h.json")
+            except OSError:
+                pass
 
-            WARNING
 
-            6H Bardney monitoring script is failing, action may be required""")
+            # mail("""\
+            # Subject: 6H Bardney Monitoring WARNING
+
+            # WARNING
+
+            # 6H Bardney monitoring script is failing, action may be required""")
 
             logging.info ("This was error %s of 3. After 3 attempts, credentials authentication will be tried" % main_errors)
 
@@ -84,7 +92,7 @@ def main():
                     driver = webdriver.Firefox(options=options)
 
                     logging.info("FireFox Initialized")
-                    driver.get("http://172.17.83.2/gws")
+                    driver.get("http://" + hostname + "/gws")
                     logging.info ("Connected to BTS")
 
                     # Pass in login credentials
@@ -115,4 +123,20 @@ def main():
                         os.remove(f)
                     sys.exit()
 
+
+def main():
+    try:
+        with open('6h.json') as hosts_file:
+            hosts = json.load(hosts_file)
+    except:
+        hosts = {}
+
+    try:
+        for i in hosts["radios"]:
+            six_harmonics(i["ip"], i["file"])
+    except:
+        print("Main loop exception")
+
 main()
+
+
