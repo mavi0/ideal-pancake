@@ -26,28 +26,38 @@ def mail(content):
         server.sendmail(sender_email, receiver_email, message)
 
 def get_data(hostname, file):
-    logging.info ("Connecting to 172.17.82.2")
+    logging.info ("Connecting to " + hostname)
     # subprocess.check_output(["curl", "-s", "https://172.17.83.2/cgi-bin/gws/monitor?1"])
     # curl -k -s https://172.17.83.10/gws/ -c cookiefile -d "user=admin&pass=quick007"
     # curl -k -s https://172.17.83.10/cgi-bin/gws/monitor?1 -b cookiefile
     
-    connData = json.loads(subprocess.check_output(["curl", "-k", "-s", "https://172.17.83.2/cgi-bin/gws/monitor?1"]))
+    url = "https://" + hostname + "/cgi-bin/gws/monitor?1"
+    connData = json.loads(subprocess.check_output(["curl", "-k", "-s", url]))
+    # print(connData)
+    
+    for i in range(0, len(connData["Station"])):
+        offset = str(i + 1)
+        tx_template = "sta" + offset + "tx"
 
-    tx = connData["Station"][0]["sta1tx"].split()
-    rx = connData["Station"][0]["sta1rx"].split()
-    snr = connData["Station"][0]["sta1snr"].split()
+        rx_template = "sta" + offset + "rx"
+        snr_template = "sta" + offset + "snr"
 
-    connData["Station"][0]["tx_speed"] = tx[0]
-    connData["Station"][0]["tx_MCS"] = tx[3].replace(",", "")
-    connData["Station"][0]["tx_pkts"] = tx[-2]
 
-    connData["Station"][0]["rx_speed"] = rx[0]
-    connData["Station"][0]["rx_MCS"] = rx[3].replace(",", "")
-    connData["Station"][0]["rx_pkts"] = rx[-2]
+        tx = connData["Station"][i][tx_template].split()
+        rx = connData["Station"][i][rx_template].split()
+        snr = connData["Station"][i][snr_template].split()
 
-    connData["Station"][0]["rssi"] = snr[0]
-    connData["Station"][0]["floor"] = snr[3]
-    connData["Station"][0]["snr"] = snr[7]
+        connData["Station"][i]["tx_speed"] = tx[0]
+        connData["Station"][i]["tx_MCS"] = tx[3].replace(",", "")
+        connData["Station"][i]["tx_pkts"] = tx[-2]
+
+        connData["Station"][i]["rx_speed"] = rx[0]
+        connData["Station"][i]["rx_MCS"] = rx[3].replace(",", "")
+        connData["Station"][i]["rx_pkts"] = rx[-2]
+
+        connData["Station"][i]["rssi"] = snr[0]
+        connData["Station"][i]["floor"] = snr[3]
+        connData["Station"][i]["snr"] = snr[7]
 
     logging.info(connData)
 
@@ -68,6 +78,10 @@ def six_harmonics(hostname, file):
 
         except:
             logging.warning ("An error occured trying to capture the data from the BTS")
+            err = {"ERROR": "Unable to connect to host " + hostname}
+
+            with open('results_6H/' + file, 'w') as json_file:
+                json.dump(err, json_file)
             try:
                 os.remove("results/6h.json")
             except OSError:

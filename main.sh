@@ -1,5 +1,7 @@
 export PATH=$PATH:~/.local/bin
+echo "Gathering 6H data"
 python3 6h.py
+echo "Gathering IG data"
 python3 scrape.py
 sudo killall firefox
 sudo killall geckodriver
