@@ -1,0 +1,1 @@
+{ "radios": [ { "ip": "172.17.83.2", "file": "6h.json" }, { "ip": "172.17.80.130", "file": "alstonA.json" }, { "ip": "172.17.80.131", "file": "alstonB.json" }, { "ip": "172.17.80.132", "file": "alstonC.json" }] }
